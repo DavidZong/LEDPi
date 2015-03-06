@@ -2,7 +2,7 @@
 import time
 x = 0
 startTime = time.time()
-while True:
+while x < 1001:
 	print x
 	x = x + 1
 	if (x % 1000) == 0:
