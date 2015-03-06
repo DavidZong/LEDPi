@@ -10,3 +10,8 @@ import numpy as np
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(11, GPIO.OUT)
 
+## show user menu that lets them choose how to define function
+
+## get math function from user as a function of time
+
+## run LED program until user stops
