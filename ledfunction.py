@@ -5,6 +5,8 @@
 import time
 import RPi.GPIO as GPIO
 import numpy as np
+from ledFunctionGen import sineGen, squareGen, triGen, sawGen, customGen
+from sys import exit
 
 ## Define GPIO pins and set the GPIO out pin to 11
 GPIO.setmode(GPIO.BOARD)
@@ -28,40 +30,15 @@ def menu():
 			sawGen()
 		elif next == "5":
 			customGen()
+		elif next == "q":
+			print "Quitting..."
+			GPIO.cleanup()
+			sys.exit()
 		else:
 			print "Please enter a valid option"
 			print "1. Sine\n2. Square\n3. Triangle\n4. Sawtooth\n5. Custom"
 			next = raw_input("> ")
 	
-
-## get math function from user as a function of time and generate an array with 1 ms resolution:
-## functions in this family are sineGen(), squareGen(), triGen(), sawGen() and customGen()
-
-## sineGen() accepts no parameters and outputs an array of values that define greyscale PWM values
-## of a sine wave. This function should take user input of amplitude, period, min value and max value.
-## the array this method generates should be one full period of a sine wave. 
-def sineGen():
-	print "Not Implemented Yet!"
-	return []
-
-def squareGen():
-	print "Not Implemented Yet!"
-	return []
-
-def triGen():
-	print "Not Implemented Yet!"
-	return []
-
-def sawGen():
-	print "Not Implemented Yet!"
-	return []
-
-## customGen() asks the user to point it to a csv file that represents an array of PWM values. This csv
-## can be anything. The csv must be 1 dimentional, and each cell represents 1 ms 
-def customGen():
-	print "Not Implemented Yet!"
-	return []
-
 ## run LED program until user stops
 ## runLED(function) takes an array and sends that as greyscale PWM to the GPIO pins. Upon reaching the end of
 ## the array, the function should loop the array until the user tells the program to stop. The PWM frequency
@@ -69,10 +46,5 @@ def customGen():
 def runLED(function):
 
 
-## the main method
-def main():
-	# some while loop or something
-
-## run the program
-main()
-GPIO.cleanup()
+## Run the program
+menu()
